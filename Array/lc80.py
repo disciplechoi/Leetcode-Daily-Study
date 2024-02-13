@@ -1,37 +1,31 @@
 # 1st review(02.09.2024)
 
-# 숫자가 나타나면 2번까지 카운트를 한다. 2번이상이면 
-# 3번째부터 인덱스 -1씩 하고 마지막칸은 공백으로 넣어준다
+#for 문의 조건절이 변하는 변수는 넣지 않는 것이 좋다
 
 from typing import List
 
+#TC : O(N)
+#MC : O(1)
+nums = [0,0,1,1,1,1,2,3,3]
 
-nums = [1,1,1,2,2,3]
 def removeDuplicates(nums: List[int]) -> int:
-        
-        if len(nums) == 1:
-            return len(nums)
-        
-        count = 0
-       
 
-        for i in range(0, len(nums)-1):
-            current = nums[i]
-           # print("i : ", i)
-            #print("len :", lenOfList)
+    i, cnt = 1,1
 
-            if count > 1:
-                 for i in range(i, len(nums)-1):
-                      nums[i] = nums[i+1]
-            
-            if current == nums[i+1] :
-                count +=1
-                  
-            else:
-                 count = 0
+    while(i<len(nums)) :
 
         print(nums)
-        return len(nums)
+        if nums[i] == nums[i-1]:
+            cnt+=1
 
+            if cnt > 2:
+                nums.pop(i-1)
+                i-=1
+
+            
+        else:
+            cnt = 1
+        i+=1
+    return None
 
 print(removeDuplicates(nums))
