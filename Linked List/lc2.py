@@ -5,25 +5,63 @@
 # 4. 배열을 마지막에 리버스 해야한다. => 거꾸로 된 것이 좋음. 어차피 덧셈은 뒤에서 시작함.
 
 
-l1 = [2,4,3]
-l2 = [5,6,4]
+# linked list concept
 
-number1,number2 = 0,0
-j = 0
 
-for i in l1 :
-    number1 = number1 + i*pow(10,j)
-    #print(pow(10,2))
-    #print(number1)
-    j +=1
+# node = head
+# while node :
+#     print(node.val)
+#     print(node.next)
+#     node = node.next    
 
-j=0 
-for i in l2 :
-    number2 = number2 + i*pow(10,j)
-    #print(pow(10,2))
-    #print(number1)
-    j +=1
 
-print(number1)
-print(number2)
-        
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+l1 = ListNode(2)
+current = l1
+
+current.next = ListNode(4)
+current = current.next
+
+current.next = ListNode(3)
+current = current.next
+
+l2 = ListNode(5)
+current = l2
+
+current.next = ListNode(6)
+current = current.next
+
+current.next = ListNode(4)
+current = current.next
+
+
+
+total = ListNode(0)
+        current = total
+        carry = 0
+
+        while l1!=None or l2!=None  or carry !=0:
+            val1 = l1.val if l1 else 0
+            val2= l2.val if l2 else 0
+            sum = val1+val2+carry
+
+            if sum>=10 :
+                carry = sum//10
+            else : 
+                carry = 0
+
+            current.next= ListNode(sum%10)
+            current = current.next
+             
+            l1=l1.next if l1 else None
+            l2=l2.next if l2 else None
+            
+
+while total :
+    print(total.val)
+    total = total.next

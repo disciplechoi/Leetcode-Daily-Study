@@ -1,7 +1,17 @@
-# 1회독 (1/27/2024)
+"""
+* Review 
+1st (1/27/24)
+2nd (2/19/24)
 
-# 궁금한 점
-# 트리 출력하는 부분은 코드에 안 넣어도 되는건가?
+* Questions
+트리 출력하는 부분은 코드에 안 넣어도 되는건가?
+
+* Concepts
+preorder : root -> left -> right
+postorder : left -> right -> root
+inorder : left -> root -> right
+
+"""
 
 from typing import List
 from collections import deque
