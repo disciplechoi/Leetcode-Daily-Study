@@ -1,4 +1,13 @@
 """"
+* Review
+ - 1st : 02/20/24
+
+
+ 
+* Solution
+1) Naive - Me
+TC : O(len(T))
+MC : O(1)
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         answer = False
@@ -17,5 +26,17 @@ class Solution:
 
 
         return answer
+
+ 1-1) Runtime enhancement
+ class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        s_index = 0
+        
+        for t_index in range(0, len(t)) :
+            if s_index < len(s) and s[s_index] == t[t_index]:
+                s_index += 1
+
+        return s_index == len(s)
+            
         
 """
