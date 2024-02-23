@@ -1,5 +1,12 @@
-# 1st review (1/31/2024)
+"""
+* Review
+- 1st review : 1/31/2024
+- 2nd review : 2/21/2024
 
+
+
+* Solution
+1) 
 from typing import List
 
 grid = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
@@ -56,4 +63,53 @@ sol = Solution()
 print("answer : ",sol.numIslands(grid))
 print(grid)
             
-            
+"""
+
+TC(M * N)
+SC(M * N)
+import collections
+from typing import List
+
+grid = [["1"], ["1"]]
+
+number = 0
+de = collections.deque()
+
+
+def numIslands(grid: List[List[str]]) -> int:
+    number = 0
+    de = collections.deque()
+
+    def dfs():
+
+        while de:
+            i, j = de.popleft()
+            print(i, j)
+
+            if i + 1 < len(grid) and grid[i + 1][j] == "1":
+                de.append((i + 1, j))
+                grid[i + 1][j] = "0"
+            if i - 1 >= 0 and grid[i - 1][j] == "1":
+                de.append((i - 1, j))
+                grid[i - 1][j] = "0"
+
+            if j - 1 >= 0 and grid[i][j - 1] == "1":
+                de.append((i, j - 1))
+                grid[i][j - 1] = "0"
+
+            if j + 1 < len(grid[0]) and grid[i][j + 1] == "1":
+                de.append((i, j + 1))
+                grid[i][j + 1] = "0"
+
+    for i in range(0, len(grid)):
+        for j in range(0, len(grid[i])):
+            if grid[i][j] == "1":
+                number += 1
+                print("here")
+                de.append((i, j))
+                dfs()
+
+    return number
+
+
+print(numIslands(grid))
