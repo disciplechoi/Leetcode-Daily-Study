@@ -3,7 +3,17 @@ import collections
 ransomNote = "aa"
 magazine = "aab"
 
+"""
+* Review
+- 1st 2/22/24
 
+
+"""
+
+
+# Sol 1)
+# TC O(len(ransomeNote)+len(magazine))
+# MC O(len(magazine))
 def canConstruct(ransomNote: str, magazine: str) -> bool:
 
     answer = True
@@ -27,3 +37,20 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
 
 
 print(canConstruct(ransomNote, magazine))
+
+
+# Sol2 - Sol1 enhancement
+def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+
+    letter_count = collections.defaultdict(int)
+
+    for m in magazine:
+        letter_count[m] += 1
+
+    for r in ransomNote:
+        if letter_count[r] > 0:
+            letter_count[r] -= 1
+        else:
+            return False
+
+    return True
