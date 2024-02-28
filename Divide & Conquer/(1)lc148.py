@@ -1,13 +1,11 @@
 """
 * Review
 - 1st : 2/24/2024
-- 2nd :
-
-
-* Solution
-1) 
+- 2nd : 2/27/2024
 
 """
+
+# Solution 1)
 
 from typing import Optional
 
@@ -39,21 +37,29 @@ def create_linked_list():
 linked_list_head = create_linked_list()
 
 
-def sortList(head: Optional[ListNode]) -> Optional[ListNode]:
+def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-    first_node = head
-    current = head
+    if not head or not head.next:
+        return head
 
-    while current.next:
+    def getMid(self, head):
 
-        temp = current
+        slow, fast = head, head.next
 
-        if current.val > current.next.val:
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-            temp.next = current
-            current.next = current.next.next
+        return slow
 
-        current = current.next
+    def mergeSort(self, left, right):
+        print("mergeSort called")
 
+    # split the list with mid index
+    left = head
+    right = self.getMid(head)
 
-sortList(linked_list_head)
+    left = self.sortList(left)
+    right = self.sortList(right)
+
+    return self.mergeSort(left, right)
