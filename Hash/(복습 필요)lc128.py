@@ -1,4 +1,5 @@
 from typing import List
+
 # 2nd Review (01/29/2024)
 
 # Solution 1)
@@ -14,9 +15,9 @@ from typing import List
 #             while num +1 in nums:
 #                 cnt+=1
 #                 num+=1
-            
+
 #             longest_cnt = max(longest_cnt, cnt)
-            
+
 #             return longest_cnt
 
 
@@ -25,21 +26,21 @@ from typing import List
 # SC : O(1)
 
 
-nums =[1,2,0,1]
+nums = [1, 2, 0, 1]
 
 # class Solution:
 #     def longestConsecutive(self, nums: List[int]) -> int:
 
 #         if not nums:
 #             return 0
-        
+
 #         nums.sort()
-        
+
 #         current_cnt = 1
 #         longest_cnt = 1
 
 #         for i in range(0, len(nums)-1):
-               
+
 #             if nums[i+1]== nums[i]+1:
 #                 current_cnt+=1
 
@@ -48,37 +49,54 @@ nums =[1,2,0,1]
 
 #             else:
 #                 longest_cnt = max(current_cnt, longest_cnt)
-#                 current_cnt = 1   
+#                 current_cnt = 1
 
 #         return max(current_cnt, longest_cnt)
-    
+
 # sol = Solution()
 # print(sol.longestConsecutive(nums))
 
 
-#3)
+# 3)
 # TC : O(n)
 # SC : O(N)
+#  in python, set is implemented as a hash table. So you can expect to lookup/insert/delete in O(1) average.
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        
-      
-        if not nums: 
-            return 0 
 
-        nums_set = set(nums) #remove duplication
+        if not nums:
+            return 0
+
+        nums_set = set(nums)  # remove duplication
 
         longest_cnt = 1
 
         for num in nums_set:
             current_num = num
-            cnt=1
+            cnt = 1
 
-            while current_num+1 in nums_set:
-                cnt+=1
-                current_num+=1
+            while current_num + 1 in nums_set:
+                cnt += 1
+                current_num += 1
 
-            longest_cnt=max(longest_cnt,cnt)
-
+            longest_cnt = max(longest_cnt, cnt)
 
         return longest_cnt
+
+
+# 3-1)
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+
+        nums_set = set(nums)  # remove duplication
+        longest = 0
+
+        for n in nums_set:
+            if n - 1 not in nums_set:
+                length = 0
+                while n + length in nums_set:
+                    length += 1
+
+                longest = max(length, longest)
+
+        return longest
