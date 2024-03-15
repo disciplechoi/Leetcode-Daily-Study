@@ -50,3 +50,22 @@ for path in str.split("/"):
 answer = "/" + "/".join(stack)  # <- 이부분이 무엇을 뜻하는 것인지 공부가 필요하다.
 
 print(answer)
+
+
+# Sol3)
+# not in
+
+
+def simplifyPath(self, path: str) -> str:
+
+    splited_path = path.split("/")
+    stack = []
+
+    for s in splited_path:
+
+        if stack and s == "..":
+            stack.pop()
+        elif s not in [".", "", ".."]:
+            stack.append(s)
+
+    return "/" + "/".join(stack)

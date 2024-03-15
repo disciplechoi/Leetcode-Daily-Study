@@ -5,9 +5,6 @@
 
 """
 
-# 질문
-# 스택에 값을 두개씩 넣었는데 왜 첫번째 인자만 출력이 되는거지?
-
 
 class MinStack:
 
@@ -20,7 +17,7 @@ class MinStack:
             self.minstack.append((val, val))
             return
 
-        current_min = self.minstack[len(self.minstack) - 1][1]
+        current_min = self.minstack[len(self.minstack) - 1][1]  # [-1][1]로 대체가능.
 
         if val < current_min:
             current_min = val
@@ -28,7 +25,7 @@ class MinStack:
         self.minstack.append((val, current_min))
 
     def pop(self) -> None:
-        self.minstack.pop()
+        self.minstack.pop()  # pop을 하게 되면 그 전에 쌓인 데이터 중 가장 작은 데이터에 대한 히스토리를 갖고 있는게 중요하다.
 
     def top(self) -> int:
         return self.minstack[len(self.minstack) - 1][0]
