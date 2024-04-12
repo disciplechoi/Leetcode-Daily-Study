@@ -63,7 +63,7 @@ class Solution:
 
 
 # 3. (improvement of 2)
- 아무리바도 이해안가는 알고리즘음..
+
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
