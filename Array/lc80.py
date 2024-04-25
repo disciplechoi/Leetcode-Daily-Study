@@ -63,7 +63,7 @@ class Solution:
 
 
 # 3. (improvement of 2)
-
+# 1) K의 출력 범위를 확인하는 것이 중요함.
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
